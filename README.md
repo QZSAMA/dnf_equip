@@ -9,10 +9,10 @@ PyQT5 - UI
 pandas - csv updating
 
 Main propose: 
-##  Material recording and updating (Signing System "签到系统")
-##  from csv to DataBase 
-##  Time recording of each runs
-##  Reminding of equip buying in the NPC
-##  Machine Learnign to classifing the material type and charcter class (base type)
-##  OCR from screen shot and extract the material amount and chacterId 
-##  mouse tracking / screen tracking of each motion of user and trigger the functions in the program instead of user updating
+1.  Material recording and updating (Signing System "签到系统")
+2.  from csv to DataBase 
+3.  Time recording of each runs
+4.  Reminding of equip buying in the NPC
+5.  Machine Learnign to classifing the material type and charcter class (base type)
+6.  OCR from screen shot and extract the material amount and chacterId 
+7.  mouse tracking / screen tracking of each motion of user and trigger the functions in the program instead of user updating
