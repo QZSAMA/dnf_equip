@@ -145,18 +145,18 @@ class Ui_MainWindow(object):
         def retranslateUi(self, MainWindow):
                 _translate = QtCore.QCoreApplication.translate
                 MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-                self.BattleMage.setText(_translate("MainWindow", "Index"))
-                self.M_Crusader.setText(_translate("MainWindow", "Dad\nKirei"))
-                self.F_Laucher.setText(_translate("MainWindow", "Misaka\nMikoto"))
-                self.F_Crusader.setText(_translate("MainWindow", "Rora\nSuchuato"))
-                self.SwiftMaster.setText(_translate("MainWindow", "Vento\nDeFront"))
-                self.SoulBender.setText(_translate("MainWindow", "Heven\nKensera"))
-                self.Luke.setText(_translate("MainWindow", "卢克"))
-                self.Tayberrs.setText(_translate("MainWindow", "泰波\n""尔斯"))
-                self.DC.setText(_translate("MainWindow", "黎明"))
-                self.Assult.setText(_translate("MainWindow", "强袭"))
-                self.Anton.setText(_translate("MainWindow", "安图恩"))
-                self.Beast.setText(_translate("MainWindow", "魔兽"))
+                # self.BattleMage.setText(_translate("MainWindow", "Index"))
+                # self.M_Crusader.setText(_translate("MainWindow", "Dad\nKirei"))
+                # self.F_Laucher.setText(_translate("MainWindow", "Misaka\nMikoto"))
+                # self.F_Crusader.setText(_translate("MainWindow", "Rora\nSuchuato"))
+                # self.SwiftMaster.setText(_translate("MainWindow", "Vento\nDeFront"))
+                # self.SoulBender.setText(_translate("MainWindow", "Heven\nKensera"))
+                # self.Luke.setText(_translate("MainWindow", "卢克"))
+                # self.Tayberrs.setText(_translate("MainWindow", "泰波\n""尔斯"))
+                # self.DC.setText(_translate("MainWindow", "黎明"))
+                # self.Assult.setText(_translate("MainWindow", "强袭"))
+                # self.Anton.setText(_translate("MainWindow", "安图恩"))
+                # self.Beast.setText(_translate("MainWindow", "魔兽"))
                 self.Complete.setText(_translate("MainWindow", "Complete"))
                 self.Start.setText(_translate("MainWindow", "Start"))
                 self.menuNothinMenu.setTitle(_translate("MainWindow", "NothinMenu"))
@@ -188,6 +188,8 @@ class Ui_MainWindow(object):
                 
                 self.CurrentTimeLCD.display(time_text) #显示时间
         def startClicked(self):
+                if self.timer:
+                        self.timer.stop()
                 self.complete=0
                 self.startTime=datetime.datetime.now()
                 self.timer=Qt.QTimer(self.StopWatchLCD)
@@ -197,18 +199,21 @@ class Ui_MainWindow(object):
         def completeNotClicked(self):
                 #更新时间的显示
                 time = datetime.datetime.now() - self.startTime #获取当前时间与开始时间的差别
-                print(time)
+                # print(time)
                 time_text = str(time)[:-4] #获取HH:MM:SS格式的时间
                 
                 self.StopWatchLCD.display(time_text) #显示时间
         def completeClicked(self):
                 self.timer.stop()
                 if self.complete:
+                        self.Complete.setText("Complete")
                         if not (self.characterId=='' or self.dungeon==''):
                                 main.signed(self.characterId,self.dungeon)
                         self.complete=0
                 else:
-                        self.complete = self.complete +1
+                        self.complete = self.complete +1                        
+                        self.Complete.setText("Update")
+                print(self.characterId,self.dungeon,self.complete)
 if __name__=='__main__':
         import sys
         app = QtWidgets.QApplication(sys.argv)
